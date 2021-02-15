@@ -17,5 +17,4 @@ def parse_contents(contents, filename):
             return df
         return
     except:
-        print("erro")
         return
