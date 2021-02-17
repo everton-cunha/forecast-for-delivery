@@ -78,7 +78,7 @@ def forecast(df_file, deadline):
             x=df['date'],
             y=df['seventy_five'],
             mode='lines+markers+text',
-            name='Provável (percentil 75)',
+            name='Percentil 75',
             text=df['seventy_five'],
             textposition='bottom center',
             marker=dict(color='#FF8C00')
@@ -88,7 +88,7 @@ def forecast(df_file, deadline):
             x=df['date'],
             y=df['fifty'],
             mode='lines+markers+text',
-            name='Provável (percentil 50)',
+            name='Percentil 50',
             text=df['fifty'],
             textposition='bottom center',
             marker=dict(color='#FCBD00')

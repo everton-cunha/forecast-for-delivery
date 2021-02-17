@@ -16,7 +16,6 @@ app.config.suppress_callback_exceptions = True
 
 
 app.layout = html.Div([
-    html.Div([html.H3('Provável data de entrega será...')]),
     html.Div([html.H3('Arquivo com as amostras')]),
     dcc.Upload(
         id='upload-data',
@@ -37,7 +36,7 @@ app.layout = html.Div([
         multiple=False
     ),
     html.Br(),
-    html.Div([html.H3('Data desejada')]),
+    html.Div([html.H3('Data desejada para a entrega')]),
     html.Div([
         dcc.DatePickerSingle(
             id='deadline',
@@ -51,17 +50,17 @@ app.layout = html.Div([
     html.Br(),
     html.Div([
         html.Div([html.H3('Total, ToDo and Done'),
-                  dcc.Graph(id='iniciativa-carreta')]),
+                  dcc.Graph(id='iniciativa')]),
         html.Div([html.H3('Previsão'),
-                  dcc.Graph(id='prediction-carreta')]),
+                  dcc.Graph(id='prediction')]),
     ],),
-    html.Div([html.H3('Dados')]),
+    html.Div([html.H3('Dados da Simulação')]),
     html.Div(id='output-data-upload'),
 ])
 
 @app.callback([
-    Output('iniciativa-carreta', 'figure'),
-    Output('prediction-carreta', 'figure'),
+    Output('iniciativa', 'figure'),
+    Output('prediction', 'figure'),
     Output('output-data-upload', 'children')],
     [Input('upload-data', 'contents'), Input('upload-data', 'filename'), Input('deadline', 'date')])
 def set_display_charts_and_table(contents, filename, deadline):
@@ -78,4 +77,4 @@ def set_display_charts_and_table(contents, filename, deadline):
     return {'data': []}, {'data': []}, []
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0')
+    app.run_server(host='0.0.0.0', debug='True')
