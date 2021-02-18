@@ -77,4 +77,4 @@ def set_display_charts_and_table(contents, filename, deadline):
     return {'data': []}, {'data': []}, []
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', debug='True')
+    app.run_server(host='0.0.0.0')

@@ -23,13 +23,11 @@ def _list_build(done_list, total_list, deliveries):
 
 
 def forecasting(df):
-    #pega as inforações de done e escopo
     done_list = df['done'].tolist()
     date_list = df['date'].tolist()
     total_list = df['total'].tolist()
     deliveries = []
-    # deliveries
-    #verifica se existe algo já feito para continuar
+
     if set(done_list) == {0}:
         return
 
@@ -56,19 +54,14 @@ def forecasting(df):
     df_percentile_fifty = pd.DataFrame(
         {'date': [date_list[-1]], 'fifty': [done_list[-1]]})
 
-    #monta a lista com o melhor caso
     _best_list = _list_build(done_list, total_list, deliveries[-1])
 
-    #monta a lista com o pior caso
     _worst_list = _list_build(done_list, total_list, deliveries[0])
 
-    #monta a lista com o percentil75
     _percentile_seventy_five_list = _list_build(done_list, total_list, _pencentil75)
     
-    #monta a lista com o percentil50
     _percentile_fifty_list = _list_build(done_list, total_list, _pencentil50)
 
-    #identifica o ciclo que acontecem as entregas
     if len(date_list) > 1:
         _cycle_delta = datetime.strptime(date_list[1], '%d/%m/%Y') - datetime.strptime(date_list[0], '%d/%m/%Y')
     else:
