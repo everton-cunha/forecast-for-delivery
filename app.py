@@ -11,6 +11,7 @@ from table import table
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+server = app.server
 
 app.config.suppress_callback_exceptions = True
 
@@ -77,4 +78,4 @@ def set_display_charts_and_table(contents, filename, deadline):
     return {'data': []}, {'data': []}, []
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0')
+    app.run_server()
